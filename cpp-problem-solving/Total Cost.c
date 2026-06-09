@@ -1,0 +1,36 @@
+//Total Cost
+
+
+#include <stdio.h>
+
+int main() {
+    double Basic_PRICE = 150.0;
+    double VIP_PRICE = 300.0;
+
+    double* pricePtr;
+    double price;
+
+    int age;
+    int numTickets;
+
+    scanf("%d", &age);
+    scanf("%d", &numTickets);
+
+    // Add a discount percentage based on age
+    double discount = 0.0;
+    if (age >= 0 && age < 18) {
+        pricePtr = &Basic_PRICE;
+        discount = 0.10; // 10% discount for Basic tickets
+    } 
+    else {
+        pricePtr = &VIP_PRICE;
+        discount = 0.05; // 5% discount for VIP tickets
+    }
+
+    double discountedPrice = *pricePtr - (*pricePtr * discount);
+    price = numTickets * discountedPrice;
+
+    printf("Rs.%.2lf", price);
+
+    return 0;
+}
